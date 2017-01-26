@@ -3,76 +3,57 @@
 \begin{document}
 Уравнения Ньютена
 $$
-(m Subscript[v, x]^\[Prime](t)
-m Subscript[v, y]^\[Prime](t)
-
-)==(m cos(\[Alpha](t)) f(t)-k Subscript[v, x](t)
--g m+f(t) sin(\[Alpha](t)) m-k Subscript[v, y](t)
-
-)
+\left(
+\begin{array}{c}
+ m \left(v_x' t\right) \\
+ m \left(v_y' t\right) \\
+\end{array}
+\right)=\left(
+\begin{array}{c}
+ m (\cos  (\alpha  t)) (f t)-k \left(v_x t\right) \\
+ -\left(v_y t\right) k-g m+m (f t) (\sin  (\alpha  t)) \\
+\end{array}
+\right)
 $$
 Решение уравнений если считать что сила f действует под углом $\alph{}$
 $$
-E^(-((k t)/m)) \!\(
-\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(t\)]\(\(\(f(t)\)\ 
-\*SuperscriptBox[\(E\), 
-FractionBox[\(k\ t2\), \(m\)]]\ \(cos(\[Alpha](t2))\)\) \[DifferentialD]t2\)\)
+e^{-\frac{k t}{m}} \int_0^t (f t) e^{\frac{k \text{t2}}{m}} (\cos  (\alpha  \text{t2})) \, d\text{t2}
 $$
 $$
-(Subscript[a, y]+g+\[Beta] Subscript[v, y])^2+(Subscript[a, x]+\[Beta] Subscript[v, x])^2==f(t)^2
+e^{-\frac{k t}{m}} \int_0^t e^{\frac{k \text{t2}}{m}} ((f t) (\sin  (\alpha  \text{t2}))-g) \, d\text{t2}
 $$
 $$
-L==\!\(
-\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(t1\)]\(\(
-\*SuperscriptBox[\(E\), \(\[Beta]\ \((\(-t\))\)\)]\ \(
-\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(t\)]\(
-\*SuperscriptBox[\(E\), \(\[Beta]\ t2\)]\ \*
-SqrtBox[
-RowBox[{
-SuperscriptBox[
-RowBox[{"f", "(", "t2", ")"}], "2"], "-", 
-SuperscriptBox[
-RowBox[{"(", 
-RowBox[{"g", "+", 
-RowBox[{"\[Beta]", " ", 
-RowBox[{
-SubscriptBox["v", "y"], "(", "t2", ")"}]}], "+", 
-RowBox[{
-SuperscriptBox[
-SubscriptBox["v", "y"], "\[Prime]",
-MultilineFunction->None], "(", "t2", ")"}]}], ")"}], "2"]}]]\) \[DifferentialD]t2\)\) \[DifferentialD]t\)\)
+\left(a_y+g+\beta  v_y\right){}^2+\left(a_x+\beta  v_x\right){}^2=(f t)^2
 $$
 $$
-\!\(
-\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(t1\)]\(\((
-\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(t\)]\(\*
-SuperscriptBox[
-SubscriptBox["v", "y"], "\[Prime]",
-MultilineFunction->None](t2)\) \[DifferentialD]t2)\) \[DifferentialD]t\)\)==0
+e^{\beta  (-t)} \int_0^t e^{\beta  \text{t2}} \sqrt{f(\text{t2})^2-\left(g+\text{vy}'(\text{t2})+\beta  \text{vy}(\text{t2})\right)^2} \, d\text{t2}
 $$
 $$
-E^(\[Beta] (t-t2)) Sqrt[f(t)^2-(g+vy^\[Prime](t)+\[Beta] vy(t))^2]+\[Lambda] vy^\[Prime](t)
+L=\int_0^{\text{t1}} e^{\beta  (-t)} \int_0^t e^{\beta  \text{t2}} \sqrt{(f \text{t2})^2-\left(g+\beta  \left(\text{t2} v_y\right)+\text{t2} v_y'\right){}^2} \, d\text{t2} \, dt
 $$
 $$
-f^\[Prime](t) (g+\[Beta] Subscript[v, y](t)+Subscript[v, y]^\[Prime](t))==f(t) (\[Beta] Subscript[v, y]^\[Prime](t)+Subscript[v, y]^\[Prime]\[Prime](t))
+\int_0^{\text{t1}} \left(\int_0^t \text{t2} v_y' \, d\text{t2}\right) \, dt=0
 $$
 $$
-Subscript[C, 2] E^(\[Beta] (-t)) (\[Beta] Ei((t+t0) \[Beta])-E^(\[Beta] (t+t0))/(t+t0))+Subscript[C, 1] E^(\[Beta] (-t))-g/\[Beta]
+e^{\beta  (t-\text{t2})} \sqrt{f(t)^2-(g+\beta  \text{vy}+\text{vyd})^2}+\lambda  \text{vyd}
 $$
 $$
-(f0 cos(\[Alpha]))/(\[Beta] (t/t0+1)^2)
+\left(t f'\right) \left(g+\beta  \left(t v_y\right)+t v_y'\right)=(f t) \left(\beta  \left(t v_y'\right)+t v_y''\right)
 $$
 $$
-((f0 sin(\[Alpha]))/(t/t0+1)^2-g)/\[Beta]
+C_2 e^{\beta  (-t)} \left(\beta  \text{Ei}((t+\text{t0}) \beta )-\frac{e^{\beta  (t+\text{t0})}}{t+\text{t0}}\right)+C_1 e^{\beta  (-t)}-\frac{g}{\beta }
 $$
 $$
-(g (t0+t1)-f0 t0 sin(\[Alpha]))/\[Beta]==0
+\frac{\text{f0} (\alpha  \cos )}{\beta  \left(\frac{t}{\text{t0}}+1\right)^2}
 $$
 $$
-(f0 t0 sin(\[Alpha])-g t0)/g
+\frac{\frac{\text{f0} (\alpha  \sin )}{\left(\frac{t}{\text{t0}}+1\right)^2}-g}{\beta }
 $$
 $$
-(f0 t0 Cos[\[Alpha]])/\[Beta] - (g t0 Cot[\[Alpha]])/\[Beta]
+\frac{g (\text{t0}+\text{t1})-\text{f0} \text{t0} (\alpha  \sin )}{\beta }=0
+$$
+$$
+\frac{\text{f0} \text{t0} (\alpha  \sin )-g \text{t0}}{g}
 $$
 $$
 \frac{\sqrt[3]{\text{f0}} \text{t0} \left(\text{f0}^{2/3}-g^{2/3}\right) \sqrt{1-\frac{g^{2/3}}{\text{f0}^{2/3}}}}{\beta } 
