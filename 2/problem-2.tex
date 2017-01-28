@@ -1,0 +1,125 @@
+\documentclass[a4paper]{article}
+%% Language and font encodings
+\usepackage[english,russian]{babel}
+\usepackage[utf8x]{inputenc}
+%\usepackage[cp1251]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{caption}
+\usepackage{subcaption}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\newcommand{\pd}{\partial}
+
+\title{Problem 2}
+\author{Nagaoka bags}
+\date{January 28-29, 2017}
+
+\begin{document}
+\maketitle
+In this problem we face \textit{Hall effect}-like resistivity density tensor. 
+In the steady state there is no charge density $\nabla E = 0$, so we have Laplace equation $\nabla \phi = E$
+\begin{equation}
+\nabla ^2 \phi = 0
+\end{equation}
+\section{Boundary conditions}
+Boundary conditions are 
+\begin{equation}
+\begin{split}
+\phi(x,a/2) = \phi_0 \\
+\phi(x,-a/2) = -\phi_0
+\end{split}
+\end{equation}
+and we should satisfy the requirment that no current leave through $x = 0$ and $x = a$ edges
+\begin{equation}
+\begin{split}
+E_x(0,y) = \lambda E_y(0,y) \\
+E_x(a,y) = \lambda E_y(a,y), \\
+\lambda = {\rho_{xy} \over \rho_{xx}}  
+\end{split}
+\end{equation} 
+Since $E = - \nabla \phi$
+\begin{equation}
+\begin{split}
+\frac{\pd \phi}{\pd x} (0,y) = \lambda \frac{\pd \phi}{\pd y} (0,y) \\
+\frac{\pd \phi}{\pd x} (a,y) = \lambda \frac{\pd \phi}{\pd y} (a,y)
+\end{split}
+\end{equation} 
+
+\section{Solution}
+One of possible solutions to (1) is linear function $\phi(x,y) = (a x + b) ( c y + d) $. However, only 
+\begin{equation}
+\phi(x,y) = {2 \phi_0 \over a} \left[ \lambda \left( x + b \right)  + y \right]
+\end{equation}
+satisfies boundary conditions (4). \\
+Then we assume separable solutions $\phi(x,y) = X(x) Y(y)$. (1) splits into 
+\begin{equation}
+\frac{d^2 X}{dx^2} = - k^2 X, \frac{d^2 Y}{dy^2} = - k^2 Y 
+\end{equation}
+From boundaries (4) $X'_0 Y = \lambda Y' X_0$ ($X_0 is for x = 0$, $X' = \frac{dX}{dx}$). Then differentiate $X'_0 Y' = \lambda Y'' X_0$ and substitute into (6)
+\begin{equation}
+X'_0 Y' = \lambda k^2 Y X_0
+\end{equation}
+Eliminating $Y'$ we have real $k$ value
+\begin{equation}
+k^2 = \left( \frac{X'_0}{\lambda X_0} \right) ^2 
+\end{equation}
+That results in 
+\begin{equation}
+\phi_k(x,y) = \left(A_k \cos k x + B_k sin k x \right) \left(C_k e^{k Y} + D_k e^{-k Y} \right)
+\end{equation}
+Applying the (4) boundary conditions 
+\begin{equation}
+\frac{B_k}{A_k} = \lambda \frac{C_k e^{k Y} - D_k e^{-k Y} }{C_k e^{k Y} + D_k e^{-k Y} }
+\end{equation}
+Either $C_k = 0, B_k = - \lambda A_k$ or $D_k = 0, B_k = \lambda A_k$. \\
+Most general is linear combination 
+\begin{equation}
+\begin{split}
+\phi_k(x,y) = R_k \left( cos k x + \lambda \sin k x \right) e^{k y} + S_k \left( cos k x - \lambda \sin k x \right) e^{-k y}, \\
+R_k = A_k C_k, S_k = A_k D_k
+\end{split}
+\end{equation}
+From boundaries (4) we have $\sin k a = 0 \rightarrow k_n = {n \pi \over L}$ and 
+\begin{multline}
+\phi(x,y) = { 2 \phi_0 \over a} \left[  \lambda  \left( x + b \right) + y \right] + \\ 
+\sum_{n = 1,2,3,..}^{}    cos k_n x \left( {R_k}_n e^{k_n y} + {S_k}_n e^{-k_n y} \right) + \lambda \sin k_n x \left( {R_k}_n e^{k_n y} - {S_k}_n e^{-k_n y} \right) 
+\end{multline}
+
+From symmetry of equations (1), (4)  we find $S_n = (-1)^{n+1} R_n$ and 
+
+\begin{multline}
+\phi(x,y) = {2 \phi_0 \over a} \left[ \lambda \left( x - {a \over 2}   \right) + y \right] + \\
+\sum_{m = 1,3..} T_m \left[ \cos \left( {m \pi \over a} x \right) \cosh \left( {m \pi \over a } y \right) + \lambda \sin \left( {m \pi \over a  } x \right) \sinh \left(  { m \pi \over a } y \right) \right] + \\
+\sum_{n = 2,4..} U_n \left[ \cos \left( {n \pi \over a} x \right) \cosh \left( {n \pi \over a } y \right) + \lambda \sin \left( {n \pi \over a  } x\right) \sinh \left(  { n \pi \over a } y \right) \right]
+\end{multline}
+where $T_m = 2 R_m$ and $U_n = 2 R_n$ (m odd, n even).
+\\
+Applying boundary conditions at $y = \pm {a \over 2}$ one can achieve 
+\begin{equation}
+T_m = \frac{8 \phi_0 \lambda}{\pi^2 \cosh (m \pi /2)} - \frac{4 \lambda}{\pi \cosh (m \pi /2)} \sum_{n = 2,4, ..} U_n \cosh \left( {n \pi \over 2} \right) \frac{n}{n^2 - m^2}
+\end{equation}
+\begin{equation}
+\frac{-4 \lambda}{\pi \sinh (n \pi / 2)} \sum_{m = 1,3,..} T_m \sinh \left( {m \pi \over 2} \right) \frac{m}{m^2-n^2}
+\end{equation}
+To get solutions for $I_y$ and $R$ we should appropriate partial derivatives of $\phi$ and get $J_{x,y}$ from $E$
+\begin{equation}
+J_x = {1 \over \rho_{xx}} \sum_{m = 1,3,..} T_m {m \pi \over a} \sin \left( m \pi x \over a \right) \cosh \left( m \pi y \over a \right) - 
+{1 \over \rho_{xx}} \sum_{n = 2,4,..} U_n {n \pi \over a} \sin \left( n \pi x \over a \right) \sinh \left( n \pi y \over a \right)
+\end{equation}
+
+\begin{multline}
+J_y = -\frac{2 \phi_0}{a \rho_{xx}} - \\
+{1 \over \rho_{xx}} \sum_{m = 1,3,..} T_m {m \pi \over a} \cos \left( m \pi x \over a \right) \sinh \left( m \pi y \over a \right) - 
+{1 \over \rho_{xx}} \sum_{n = 2,4,..} U_n {n \pi \over a} \cos \left( n \pi x \over a \right) \cosh \left( n \pi y \over a \right)
+\end{multline}
+In order to get total $I_y$ we should count integral $I_y = \int_0^a J_y dx$. All harmonics except the constant first part of $J_y$ will give zero impact. $I_y = \frac{2 \phi_0}{\rho_{xx}}$.  Remember that potential difference is $\Phi_0 = \phi_0 - (-\phi_0) = 2 \phi_0$. Finally, 
+\begin{equation}
+I_y = {\Phi_0 \over \rho_{xx}}, I_x = 0
+\end{equation}
+\begin{equation}
+R = \rho_{xx}
+\end{equation}
+\end{document}
