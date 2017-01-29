@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}    % need for subequations
+\usepackage{graphicx}   % need for figures
+\usepackage{verbatim}   % useful for program listings
+\usepackage{color}      % use if color is used in text
+\usepackage{subfigure}  % use for side-by-side figures
+\usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs
+\usepackage{latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{amssymb}
+\bibliographystyle{utphys}
+% don't need the following. simply use defaults
+\setlength{\baselineskip}{16.0pt}    % 16 pt usual spacing between lines
+
+\setlength{\parskip}{3pt plus 2pt}
+\setlength{\parindent}{20pt}
+\setlength{\oddsidemargin}{0.5cm}
+\setlength{\evensidemargin}{0.5cm}
+\setlength{\marginparsep}{0.75cm}
+\setlength{\marginparwidth}{2.5cm}
+\setlength{\marginparpush}{1.0cm}
+\setlength{\textwidth}{150mm}
+
+
+\begin{comment}
+\pagestyle{empty} % use if page numbers not wanted
+\end{comment}
+
+\title{Problem 5}
+\author{Nagaoka bags}
+\date{January 28-29, 2017}
+\begin{document}
+\maketitle
+\iffalse
+\begin{center}
+{\large Problem 5 - Expanding Universe} \\ % \\ = new line
+\end{center}
+\fi
+\section{Solution}
+The idea of the solution below is to consider expanding as perturbation in non-stationary Schrödinger equation, find a solution for $|1_s\rangle \longrightarrow |n_s\rangle$ propagation. After some assumptions, we'll calculate the radiated energy.
+The Hamiltonian of the system:
+\begin{equation}
+	H = -\frac{\hbar^2}{2m}\Delta - \frac{e^2}{r}	
+\end{equation}
+Taking into account spherical symmetry of the expanding we'll consider only $\psi$-functions with angular momentum $l=0$.
+Then:
+\begin{equation}
+	H = \frac{\hbar^2}{2m}(-\frac{\partial^2}{\partial r^2} - \frac{2}{r}\frac{\partial}{\partial r}) - \frac{e^2}{r}
+\end{equation}
+To evaluate expansion, we'll write
+\begin{equation}
+r \longrightarrow r(1+V(t)) = r(1+ \int_0^t X(t')dt')
+\end{equation}
+$X(t)$ - Hubble constant. Then:
+\begin{eqnarray}
+i\hbar \frac {\partial}{\partial t}\psi	=[ \frac{\hbar^2}{2m}(-\frac{\partial^2}{\partial (r(1+V(t))^2} - \frac{2}{r(1+V(t))}\frac{\partial}{\partial r(1+V(t))}) - \frac{e^2}{r(1+V(t))}]\psi \nonumber \\
+i\hbar \frac {\partial}{\partial t}\psi	\approx -\frac{\hbar^2}{2m}(\frac{\partial^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r})(1-2V(t)) - \frac{e^2}{r}(1-V(t)) \nonumber \\
+H = H_0 +W(t),\nonumber \\ W(t) = V(t)(-2T - U)
+\end{eqnarray}
+T, U - kinetic and potential energy operators respectively.
+
+In first order of perturbation(interaction picture):
+\begin{equation}
+	U(0, t) = 1 - \frac{i}{\hbar}\int_0^t W_I(t')dt'
+\end{equation}
+$U(0, t)$ - operator of evolution. Amplitude of propagation from state $|i\rangle$ to $|f\rangle, |i\rangle \neq |f\rangle$:
+\begin{eqnarray}
+	A_{fi} = -\langle f|U(0, t)|i\rangle = \frac{i}{\hbar}\int_0^t \langle f|W_I(t')|i\rangle dt' =\nonumber \\= -\frac{i}{\hbar}\int_0^t \langle f|U_0 ^+(0, t')W(t')U_0 (0, t')|i\rangle dt' =  \nonumber \\=-\frac{i}{\hbar}\int_0^t \langle f|W(t')|i\rangle \exp(i\omega_{fi}t') dt'
+\end{eqnarray}
+Where  $\omega_{fi} = \frac{E_f - E_i}{\hbar}$.
+Let's consider matrix element
+\begin{equation}
+W_{fi} = \langle f|W(t)|i\rangle	 = V(t)\langle f|-2T-U|i\rangle = V(t)\langle f|U|i\rangle = -e^2V(t)\langle f|\frac{1}{r}|i\rangle 
+\end{equation}
+Since $H = T + U$, $\langle f|H|i\rangle	 = \delta_{fi}$
+
+It's possible to calculate $W_{fi}$ for any f:\\
+Initial state is $\psi_{100}$, final state: $\psi_{n00}$.
+Explicit form for $\psi_{n00}$:
+\begin{equation}
+	\psi_{n00}(r) = \frac{2}{\sqrt{a_0^3 n^5}} \frac{1}{r\sqrt{4\pi}} \frac{\exp(\frac{r}{na_0})}{(n-1)!} \frac{d^{n-1}}{dr^{n-1}} [r^n \exp(-\frac{2r}{na_0})]
+\end{equation}
+ \begin{eqnarray}
+ 	\langle n|\frac{1}{r}|1\rangle = \int_0 ^{+\infty} dr\frac{4\pi r^2}{r} \frac{2}{\sqrt{4\pi a_0^3}} \exp(-\frac{r}{a_0})   \frac{2}{\sqrt{a_0^3 n^5}} \frac{1}{r\sqrt{4\pi}} \frac{\exp(\frac{r}{na_0})}{(n-1)!} \frac{d^{n-1}}{dr^{n-1}}[ r^n \exp(-\frac{2r}{na_0})	] = \nonumber \\
+ 	=\frac{4}{a_0^3\sqrt{n^5} (n-1)!}\int_0^{+\infty}dr \exp(-\frac{r}{a_0}(1-1/n))\frac{d^{n-1}}{dr^{n-1}}[ r^n \exp(-\frac{2r}{na_0})	]
+ \end{eqnarray}
+	Making integration by parts n-1 times we obtain:
+	\begin{eqnarray}
+	\langle n|\frac{1}{r}|1\rangle = \frac{4(-1)^{n-1}}{a_0^3\sqrt{n^5} (n-1)!}\int_0^{+\infty}dr  r^n \exp(-\frac{2r}{na_0})	\frac{d^{n-1}}{dr^{n-1}}[\exp(-\frac{r}{a_0}(1-1/n))] =\nonumber \\
+	= \frac{4 (n-1)^{n-1}}{a_0^3\sqrt{n^5} (n-1)! (a_0 n)^{n-1}}	\int_0^{+\infty}dr r^n \exp(-\frac{r}{a_0}\frac{n+1}{n}) = \nonumber \\
+	=\frac{(na_0)^{n+1} n!}{(n+1)^{n+1}} \frac{4 (n-1)^{n-1}}{a_0^3\sqrt{n^5} (n-1)! (a_0 n)^{n-1}} = \frac{4\sqrt n}{a_0}\frac{(n-1)^{n-1}}{(n+1)^{n+1}}
+	\end{eqnarray}
+	For any $n>1, a_0$ - Bohr radius. In case n = 1 it's easy to modify the result mentioned above to $<\frac{1}{r}> = \frac{1}{a_0}$, in case  n = 2: $\frac{4\sqrt 2}{27a_0}$, which is a familiar result.\\ \\
+	Substituting (10) to (7), (6):
+	
+\begin{equation}
+	A_{n1} =  \frac{i}{\hbar}\frac{4e^2\sqrt n}{a_0}\frac{(n-1)^{n-1}}{(n+1)^{n+1}} \int_0^T V(t) \exp(-i\frac{E_0}{\hbar}(1-1/n^2))dt
+\end{equation}
+Assuming that Hubble constant can be considered as constant one can get final result:
+\begin{eqnarray}
+	A_{n1} =  \frac{i}{\hbar}\frac{4e^2\sqrt n}{a_0}\frac{(n-1)^{n-1}}{(n+1)^{n+1}} \int_0^T X t \exp(-i\frac{E_0}{\hbar}(1-1/n^2))dt = \nonumber \\
+	= -X\frac{i}{\hbar}\frac{4e^2\sqrt n}{a_0}\frac{(n-1)^{n-1}}{(n+1)^{n+1}}\frac{1}{\alpha^2}(1-\exp(-i\alpha T)(1+i\alpha T))
+\end{eqnarray}
+Where $\alpha = \frac{E_0}{\hbar}(1-1/n^2)$.
+Probability of propagation from state $|1s\rangle$ to $|ns\rangle$:
+\begin{eqnarray}
+P_{n1}=X^2\frac{1}{\hbar^2}\frac{16e^4 n}{a_0^2}\frac{(n-1)^{2(n-1)}}{(n+1)^{2(n+1)}}\frac{1}{\alpha^4}(2+\alpha^2 T^2 -2\cos(\alpha T) -2 \alpha T \sin(\alpha T))
+\end{eqnarray}
+To calculate radiating energy we assume the following:\\
+After excitation the atom will quickly radiate energy and return to the ground state (dipole and quadrupole interaction with photons). The time for radiation is much less than time for excitation, so it is negligible.\\
+As it can be seen from (13) the probability is proportional to $X^2$, which is thought to be small and taking into consideration that we've calculated the first approximation for propagation, it's reasonably to say that the atom will radiate once and the radiated energy:
+\begin{equation}
+	E_{rad} = \sum_{n = 2}^{\infty} E_0(1-1/n^2)P_{n1}
+\end{equation}
+The sum is finite, because $\lim_{n\longrightarrow \infty}P_{n1} = \frac{B}{n^3}$ and sum of these series is finite.
+
+\end{document}
+
+
+
+
+
+
