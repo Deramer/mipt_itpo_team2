@@ -24,6 +24,7 @@ In the steady state there is no charge density $\nabla E = 0$, so we have Laplac
 \begin{equation}
 \nabla ^2 \phi = 0
 \end{equation}
+Potential difference is between $x = 0$ and $x = a$ sides of square. Also, let's shift the $y$ axis so corresponding square side changes from $[0,a]$ to $[-a/2,a/2]$.
 \section{Boundary conditions}
 Boundary conditions are 
 \begin{equation}
@@ -117,9 +118,10 @@ J_y = -\frac{2 \phi_0}{a \rho_{xx}} - \\
 \end{multline}
 In order to get total $I_y$ we should count integral $I_y = \int_0^a J_y dx$. All harmonics except the constant first part of $J_y$ will give zero impact. $I_y = \frac{2 \phi_0}{\rho_{xx}}$.  Remember that potential difference is $\Phi_0 = \phi_0 - (-\phi_0) = 2 \phi_0$. Finally, 
 \begin{equation}
-I_y = {\Phi_0 \over \rho_{xx}}, I_x = 0
+I_y = {\Phi_0 \over \rho_{xx}}
 \end{equation}
 \begin{equation}
 R = \rho_{xx}
 \end{equation}
+It is often considered in textbooks that magnetic force (in Hall effect magnetic force results in $\rho_{xy} \neq 0$) is balanced by induced Hall potential and the current flows only parallel to the $y$ axis. It causes the same answer for $I_y$ and $R$. However, in general $J$ has both non-zero components everywhere except the boundary.  
 \end{document}
